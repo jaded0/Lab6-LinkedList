@@ -22,9 +22,9 @@ public:
 
 	}
 
-	T remove(int index) {
-		return T();
-	}
+	// T remove(int index) {
+	// 	return T();
+	// }
 
 	int find(const T& item) {
 		return -1;
@@ -83,9 +83,28 @@ public:
 
 	The list may or may not include a node with the given value.
 	*/
-	// void remove(T value){
-	//
-	// }
+	void remove(T value){
+		//start with the head
+		Node* current_val = head;
+		//if it's the head redirect the head first, then remove
+		if(head->item == value) {
+			head = current_val->next;//redirect head
+			delete current_val;
+			listSize--;
+			return;
+		}
+		//while the next value isn't null nor the value we're looking for
+		while(current_val->next != NULL && value != current_val->next->item) {
+			current_val = current_val->next;
+		}
+		//if it's null just ditch. You didn't find it.
+		if (current_val->next == NULL) return;
+		//if it's the next value delete it, making sure to not leave a hole in the links
+		Node* tobedeleted = current_val->next;
+		current_val->next = tobedeleted->next;//patching up the hole
+		delete tobedeleted;
+		listSize--;
+	}
 
 	/*
 	clear
@@ -111,7 +130,7 @@ public:
 		}
 		//go up to that index and return the value
 		Node* currentNode = this->head;
-		for (size_t i = 0; i < index; i++) {
+		for (int i = 0; i < index; i++) {
 			currentNode = currentNode->next;
 		}
 		return currentNode->item;
