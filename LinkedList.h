@@ -112,7 +112,12 @@ public:
 	Remove all nodes from the list.
 	*/
 	void clear(){
-
+		while(listSize>0) {
+			Node* current_val = head;
+			head = current_val->next;//redirect head
+			delete current_val;
+			listSize--;
+		}
 	}
 
 	/*

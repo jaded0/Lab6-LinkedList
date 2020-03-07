@@ -78,6 +78,11 @@ int main() {
 
     std::cout << "remove works!" << '\n';
 
+    std::cout << "..." << '\n';
 
+    std::cout << "list: " << ll.toString() << '\n';
+    ll.clear();
+    std::cout << "list:" << ll.toString() << "<="<< '\n';
+    std::cout << "clear works!" << '\n';
 
 }
