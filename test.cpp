@@ -85,4 +85,27 @@ int main() {
     std::cout << "list:" << ll.toString() << "<="<< '\n';
     std::cout << "clear works!" << '\n';
 
+    std::cout << "..." << '\n';
+
+    std::cout << "list:" << ll.toString() << "<="<< '\n';
+    ll.insertTail("CS");
+    ll.insertTail("EcEN");
+    ll.insertHead("Haircut");
+    ll.insertTail("eat something");
+    std::cout << "list:" << ll.toString() << "<="<< '\n';
+
+    std::cout << "..." << '\n';
+
+    std::cout << "testing find()" << '\n';
+    cout << "should output 1: " << ll.find("CS") << endl;
+    cout << "should output 0: " << ll.find("Haircut") << endl;
+    cout << "should output 2: " << ll.find("EcEN") << endl;
+    cout << "should output 3: " << ll.find("eat something") << endl;
+    cout << "should output -1: " << ll.find("sleep") << endl;
+    std::cout << "find works!" << '\n';
+
+
+
+
+
 }

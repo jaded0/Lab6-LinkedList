@@ -15,18 +15,28 @@ public:
 		Node(const T& item, Node* next_val = NULL) :
 			item(item) {next = next_val;}
 	};
-	Node* head;
+	Node* head = NULL;
 	int listSize = 0;
 
-	void insert(int index, const T& item) {
-
-	}
+	// void insert(int index, const T& item) {
+	//
+	// }
 
 	// T remove(int index) {
 	// 	return T();
 	// }
 
 	int find(const T& item) {
+		int index = 0;
+		//start with the head
+		Node* current_val = head;
+		//go through and look until the end
+		while(current_val != NULL) {
+				//cout << "item we're looking at now : " << current_val->item << endl;
+				if (current_val->item == item) return index;//if it matches return the index
+				index++;//increment the index
+				current_val = current_val->next;//go to the next value
+		}
 		return -1;
 	}
 
@@ -60,7 +70,22 @@ public:
 	Do not allow duplicate values in the list.
 	*/
 	void insertTail(T value){
-
+		std::cout << "Inserting at the tail: " << value << '\n';
+		//check to make sure there's a head
+		if(head == NULL) {
+			std::cout << "There's no head! We aren't going to be inserting at the tail today, instead:" << '\n';
+			insertHead(value);
+			return;
+		}
+		//start with the head
+		Node* current_val = head;
+		//go through and look for the end
+		while(current_val->next != NULL) {
+			current_val = current_val->next;
+		}
+		current_val->next = new Node(value);
+		//increment the listSize
+		listSize++;
 	}
 
 	/*
@@ -73,7 +98,11 @@ public:
 	insertionNode is in the list. Do not allow duplicate values in the list.
 	*/
 	void insertAfter(T value, T insertionNode){
-
+		//start with the head
+		// Node* current_val = head;
+		// while(current_val->next != NULL && value != current_val->next->item) {
+		// 	current_val = current_val->next;
+		// }
 	}
 
 	/*
