@@ -8,37 +8,37 @@ template<typename T>
 class LinkedList
 {
 private:
-public:
 	struct Node {
 		T item;
 		Node* next;
 		Node(const T& item, Node* next_val = NULL) :
-			item(item) {next = next_val;}
+		item(item) {next = next_val;}
 	};
 	Node* head = NULL;
 	int listSize = 0;
 
 	// void insert(int index, const T& item) {
-	//
-	// }
+		//
+		// }
 
-	// T remove(int index) {
-	// 	return T();
-	// }
+		// T remove(int index) {
+			// 	return T();
+			// }
 
-	int find(const T& item) {
-		int index = 0;
-		//start with the head
-		Node* current_val = head;
-		//go through and look until the end
-		while(current_val != NULL) {
-				//cout << "item we're looking at now : " << current_val->item << endl;
-				if (current_val->item == item) return index;//if it matches return the index
-				index++;//increment the index
-				current_val = current_val->next;//go to the next value
-		}
-		return -1;
-	}
+			int find(const T& item) {
+				int index = 0;
+				//start with the head
+				Node* current_val = head;
+				//go through and look until the end
+				while(current_val != NULL) {
+					//cout << "item we're looking at now : " << current_val->item << endl;
+					if (current_val->item == item) return index;//if it matches return the index
+					index++;//increment the index
+					current_val = current_val->next;//go to the next value
+				}
+				return -1;
+			}
+public:
 
 	//LinkedListInterface(void) {};
 	// virtual ~LinkedListInterface(void) {};
@@ -51,6 +51,9 @@ public:
 	Do not allow duplicate values in the list.
 	*/
 	void insertHead(T value){
+		//make sure there's no duplicates
+		if(find(value) != -1) return;
+
 		std::cout << "Inserting at the head: " << value << '\n';
 		//put it at the head
 		if(listSize == 0) head = new Node(value);//if there is no head just put it there
@@ -70,6 +73,9 @@ public:
 	Do not allow duplicate values in the list.
 	*/
 	void insertTail(T value){
+		//make sure there's no duplicates
+		if(find(value) != -1) return;
+
 		std::cout << "Inserting at the tail: " << value << '\n';
 		//check to make sure there's a head
 		if(head == NULL) {
@@ -98,6 +104,9 @@ public:
 	insertionNode is in the list. Do not allow duplicate values in the list.
 	*/
 	void insertAfter(T value, T insertionNode){
+		//make sure there's no duplicates
+		if(find(value) != -1) return;
+
 		//start with the head
 		Node* current_val = head;
 		//go until current_val points to the desired insertionNode
@@ -199,7 +208,7 @@ public:
 		string response = "";
 		Node* whichNode = this->head;
 
- 		for (size_t i = 0; i < listSize; i++) {
+ 		for (int i = 0; i < listSize; i++) {
 			//using stringstream we can have datatype-independent converstion to a string
 			stringstream ss;
 			ss << whichNode->item;

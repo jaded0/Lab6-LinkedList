@@ -15,11 +15,11 @@ int main() {
 
     std::cout << "..." << '\n';
 
-    intll.insertHead(4);
-    intll.insertHead(4);
-    intll.insertHead(4);
-    intll.insertHead(4);
-    intll.insertHead(4);
+    intll.insertHead(3);
+    intll.insertHead(42);
+    intll.insertHead(41);
+    intll.insertHead(1);
+    intll.insertHead(9);
     std::cout << "size: " << intll.size() << '\n';
     std::cout << "list: " << intll.toString() << '\n';
 
@@ -95,15 +95,15 @@ int main() {
     std::cout << "list:" << ll.toString() << "<="<< '\n';
     std::cout << "insertTail works!" << '\n';
 
-    std::cout << "..." << '\n';
-
-    std::cout << "testing find()" << '\n';
-    cout << "should output 1: " << ll.find("CS") << endl;
-    cout << "should output 0: " << ll.find("Haircut") << endl;
-    cout << "should output 2: " << ll.find("EcEN") << endl;
-    cout << "should output 3: " << ll.find("eat something") << endl;
-    cout << "should output -1: " << ll.find("sleep") << endl;
-    std::cout << "find works!" << '\n';
+    // std::cout << "..." << '\n';
+    //
+    // std::cout << "testing find()" << '\n';
+    // cout << "should output 1: " << ll.find("CS") << endl;
+    // cout << "should output 0: " << ll.find("Haircut") << endl;
+    // cout << "should output 2: " << ll.find("EcEN") << endl;
+    // cout << "should output 3: " << ll.find("eat something") << endl;
+    // cout << "should output -1: " << ll.find("sleep") << endl;
+    // std::cout << "find works!" << '\n';
 
     std::cout << "..." << '\n';
 
@@ -114,9 +114,20 @@ int main() {
     std::cout << "inserting after..." << '\n';
     ll.insertAfter("be better", "eat something");
     std::cout << "list:" << ll.toString() << "<="<< '\n';
+    std::cout << "inserting after..." << '\n';
+    //this next one will test whether it adds after a noxexistent member
+    ll.insertAfter("shoudn'texist", "nothing");
+    std::cout << "list:" << ll.toString() << "<="<< '\n';
     std::cout << "insertAfter works!!!" << '\n';
 
     std::cout << "..." << '\n';
 
-    
+    std::cout << "testing whether it'll accept duplicates" << '\n';
+    std::cout << "list:" << ll.toString() << "<="<< '\n';
+    ll.insertHead("Haircut");
+    ll.insertTail("CS");
+    ll.insertAfter("CS", "eat something");
+    std::cout << "list:" << ll.toString() << "<="<< '\n';
+    std::cout << "no duplicates accepted!" << '\n';
+
 }
