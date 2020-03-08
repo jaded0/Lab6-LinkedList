@@ -99,10 +99,17 @@ public:
 	*/
 	void insertAfter(T value, T insertionNode){
 		//start with the head
-		// Node* current_val = head;
-		// while(current_val->next != NULL && value != current_val->next->item) {
-		// 	current_val = current_val->next;
-		// }
+		Node* current_val = head;
+		//go until current_val points to the desired insertionNode
+		while(current_val->next != NULL && insertionNode != current_val->item) {
+			current_val = current_val->next;
+		}
+		//if we never found it, return without doing anything
+		if (insertionNode != current_val->item) return;
+
+
+		current_val->next = new Node(value, current_val->next);
+		listSize++;
 	}
 
 	/*
@@ -195,10 +202,8 @@ public:
  		for (size_t i = 0; i < listSize; i++) {
 			//using stringstream we can have datatype-independent converstion to a string
 			stringstream ss;
-			string add;
 			ss << whichNode->item;
-			ss >> add;
-			response += add + " ";
+			response += ss.str() + " ";
 			whichNode = whichNode->next;
 		}
 		return response.substr(0, response.length()-1);

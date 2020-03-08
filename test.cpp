@@ -93,6 +93,7 @@ int main() {
     ll.insertHead("Haircut");
     ll.insertTail("eat something");
     std::cout << "list:" << ll.toString() << "<="<< '\n';
+    std::cout << "insertTail works!" << '\n';
 
     std::cout << "..." << '\n';
 
@@ -104,8 +105,18 @@ int main() {
     cout << "should output -1: " << ll.find("sleep") << endl;
     std::cout << "find works!" << '\n';
 
+    std::cout << "..." << '\n';
 
+    std::cout << "list:" << ll.toString() << "<="<< '\n';
+    std::cout << "inserting after..." << '\n';
+    ll.insertAfter("buy soda", "Haircut");
+    std::cout << "list:" << ll.toString() << "<="<< '\n';
+    std::cout << "inserting after..." << '\n';
+    ll.insertAfter("be better", "eat something");
+    std::cout << "list:" << ll.toString() << "<="<< '\n';
+    std::cout << "insertAfter works!!!" << '\n';
 
+    std::cout << "..." << '\n';
 
-
+    
 }
