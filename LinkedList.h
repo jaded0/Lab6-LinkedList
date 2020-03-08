@@ -40,8 +40,10 @@ private:
 			}
 public:
 
-	//LinkedListInterface(void) {};
-	// virtual ~LinkedListInterface(void) {};
+	LinkedList() {};
+	virtual ~LinkedList() {
+		clear();
+	};
 
 	/*
 	insertHead
@@ -104,6 +106,7 @@ public:
 	insertionNode is in the list. Do not allow duplicate values in the list.
 	*/
 	void insertAfter(T value, T insertionNode){
+		std::cout << "inserting after: " << value << '\n';
 		//make sure there's no duplicates
 		if(find(value) != -1) return;
 
@@ -119,6 +122,7 @@ public:
 
 		current_val->next = new Node(value, current_val->next);
 		listSize++;
+		std::cout << "successful! "<< value << '\n';
 	}
 
 	/*
@@ -129,6 +133,8 @@ public:
 	The list may or may not include a node with the given value.
 	*/
 	void remove(T value){
+		//if the list is empty respond accordingly
+		if(listSize == 0) return;
 		//start with the head
 		Node* current_val = head;
 		//if it's the head redirect the head first, then remove
@@ -163,6 +169,7 @@ public:
 			delete current_val;
 			listSize--;
 		}
+		std::cout << "list size after clear: " << listSize << '\n';
 	}
 
 	/*
@@ -192,6 +199,7 @@ public:
 	Returns the number of nodes in the list.
 	*/
 	int size(){
+		std::cout << "getting size: " << listSize << '\n';
 		return listSize;
 	}
 
@@ -205,7 +213,9 @@ public:
 	"1 2 3 4 5"
 	*/
 	string toString(){
+		std::cout << "printing list" << '\n';
 		string response = "";
+		if (listSize == 0) return response;
 		Node* whichNode = this->head;
 
  		for (int i = 0; i < listSize; i++) {
@@ -215,6 +225,7 @@ public:
 			response += ss.str() + " ";
 			whichNode = whichNode->next;
 		}
+		std::cout << "your dang list" << response.substr(0, response.length()-1) << '\n';
 		return response.substr(0, response.length()-1);
 	}
 
